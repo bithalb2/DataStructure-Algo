@@ -20,7 +20,6 @@ public class SinglyLinkedList {
 	public SinglyLinkedList() {
 		super();
 		this.head = null;
-		System.out.println("Singly Linked List Constructed ...");
 	}
 	
 	// This method will add new node based on natural sorting order

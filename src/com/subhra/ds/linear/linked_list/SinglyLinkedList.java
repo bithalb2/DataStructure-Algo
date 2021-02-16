@@ -381,6 +381,7 @@ public class SinglyLinkedList {
 			fastPtr = fastPtr.next.next;
 			if(slowPtr == fastPtr) {
 				removeLink(slowPtr);
+				return;
 			}
 		}
 	}

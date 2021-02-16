@@ -12,13 +12,13 @@ public class Driver {
 		list.addAtEnd(40);
 		list.addAtEnd(50);
 		list.addAtEnd(60);*/
-		list.add(70);
+		/*list.add(70);
 		list.add(60);
 		list.add(55);
 		list.add(80);
 		list.add(90);
 		list.add(30);
-		list.add(1);
+		list.add(1);*/
 		
 		
 		/*
@@ -30,10 +30,19 @@ public class Driver {
 		 * System.out.println(list.deleteIfExist(10));
 		 * System.out.println(list.search(10));
 		 */
+		list.createLoop();
 		
-		list.display();
+		//list.display();
 		
 		System.out.println(list.detectLoop());
+		
+		System.out.println(list.startNodeOfLoop());
+		
+		list.removeLoop();
+		
+		System.out.println(list.detectLoop());
+		
+		list.display();
 		
 		//System.out.println(list.replace(80,45));
 		

@@ -280,7 +280,7 @@ public class SinglyLinkedList {
 		System.out.println("null");
 	}
 	// This is the helper method for "displayReverse()" method
-	public void repeat(Node temp) {
+	private void repeat(Node temp) {
 		if(temp == null) {
 			return;
 		} else {
@@ -307,10 +307,28 @@ public class SinglyLinkedList {
 		}
 	}
 	
+	// This method will create a Linked List with Loop
+	public void createLoop() {
+		Node first = new Node(10);
+		Node second = new Node(20);
+		Node third = new Node(30);
+		Node fourth = new Node(40);
+		Node fifth = new Node(50);
+		Node sixth = new Node(60);
+		
+		this.head = first;
+		first.next = second;
+		second.next = third;
+		third.next = fourth;
+		fourth.next = fifth;
+		fifth.next = sixth;
+		sixth.next = first;
+	}
+	
 	// This method will detect the Loop in Linked List
 	public boolean detectLoop() {
 		if(head == null) {
-			return true;
+			return false;
 		}
 		
 		Node slowPtr = head, fastPtr = head;
@@ -324,6 +342,68 @@ public class SinglyLinkedList {
 		return false;
 	}
 	
+	// This method will find the Start Node of the loop in Linked List
+	public Integer startNodeOfLoop() {
+		if(head == null) {
+			return null;
+		}
+		
+		Node slowPtr = head, fastPtr = head;
+		while(fastPtr.next != null && fastPtr.next.next != null) {
+			fastPtr = fastPtr.next.next;
+			slowPtr = slowPtr.next;
+			if(slowPtr == fastPtr) {
+				return getStartNode(slowPtr).data;
+			}
+		}
+		return null;
+	}
+	
+	// This is the helper method for 'startNodeOfLoop()' method
+	private Node getStartNode(Node slowPtr) {
+		Node temp = head;
+		while(temp != slowPtr) {
+			temp = temp.next;
+			slowPtr = slowPtr.next;
+		}
+		return temp;
+	}
+	
+	// This method will remove Loop from the Linked List
+	public void removeLoop() {
+		if(head == null) {
+			return;
+		}
+		
+		Node slowPtr = head, fastPtr = head;
+		while(fastPtr.next != null && fastPtr.next.next != null) {
+			slowPtr = slowPtr.next;
+			fastPtr = fastPtr.next.next;
+			if(slowPtr == fastPtr) {
+				removeLink(slowPtr);
+			}
+		}
+	}
+	
+	private void removeLink(Node slowPtr) {
+		Node temp = head;
+		
+		while(temp.next != slowPtr.next) {
+			temp = temp.next;
+			slowPtr = slowPtr.next;
+		}
+		
+		if(slowPtr == head) {
+			temp = head;
+			while(temp.next != head) {
+				temp = temp.next;
+			}
+			temp.next = null;
+		} else {
+			slowPtr.next = null;
+		}
+	}
+
 	// This method will find the length of the Linked List
 	public int length() {
 		if(head == null)

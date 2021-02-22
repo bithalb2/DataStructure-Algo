@@ -1,4 +1,4 @@
-package com.subhra.ds.linear.linked_list;
+package com.subhra.ds.linear.dynamic.linked_list;
 
 public class SinglyLinkedList {
 	
@@ -65,7 +65,7 @@ public class SinglyLinkedList {
 		}
 	}
 	
-	// This method will add new node at the given position negative 
+	// This method will add new node at the given position
 	public void addAtGivenPosition(int data, int position) {
 		if(position < 1) {
 			System.out.println("Invalid Position value... position cann't be ZERO or NEGATIVE");

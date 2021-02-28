@@ -42,7 +42,7 @@ public class BinarySearchTree implements Tree {
 		}
 		return temp;
 	}
-
+	// TODO
 	@Override
 	public Integer remove(Integer element) {
 		root = delete(root, element);
